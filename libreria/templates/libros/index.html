@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Lista de libros {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href=" {% url 'crear' %} " role="button">Agregar Libro</a>
+    </div>
+    
+    <div class="card-body">
+        <h4 class="card-title">Libros</h4>
+
+        
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for libro in libros %}
+                    
+                    <tr class="">
+                        <td> {{libro.id}} </td>
+                        <td>{{libro.titulo}}</td>
+                        <td>
+                        <img src="{{libro.imagen.url}}" height="100"/>    
+                        
+                        </td>
+                        <td>{{libro.descripcion}}</td>
+                        <td>
+                            <a name="" id="" class="btn btn-info" href=" {% url 'editar' libro.id %}" role="button">Editar</a> 
+                            | 
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' libro.id %}" role="button">Borrar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+       
+        
+
+
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+{% endblock %}
